@@ -1,0 +1,8 @@
+{% extends 'dolaposcrumy/base.html' %}
+{% block content %}
+<h1>Delete Task</h1>
+    <form action="" method="post">{% csrf_token %}
+      <p>Are you sure you want to delete task {{ scummer.task }} ?</p>
+      <input type="submit" value="Confirm" />
+    </form>
+{% endblock %}

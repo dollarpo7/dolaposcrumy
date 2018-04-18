@@ -1,0 +1,97 @@
+{% extends 'dolaposcrumy/base.html' %}
+{% block content %}
+
+    <table  class="table table-responsive-sm table-bordered">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">User</th>
+          <th scope="col"></th>
+          <th scope="col">Weekly Goals</th>
+          <th scope="col">Daily Goals</th>
+          <th scope="col">Verify</th>
+          <th scope="col">Done</th>
+
+        </tr>
+    </thead>
+{#{% if scrumy_goals %}#}
+{#<a class="btn btn-default" href="{% url 'dolaposcrumy:editTask' pk=scrumy_goals.pk %}"></a>#}
+{#{% endif %}#}
+
+    <tbody>
+       {% for scrummer in object_list %}
+
+
+       <tr>
+
+           <td ><a href="{% url 'dolaposcrumy:add_user' %}"> <span class="glyphicon glyphicon-plus-sign"></span></a> </td>
+
+           <td>{{ scrummer.user_id}} </td>
+
+           <td><a href="{% url 'dolaposcrumy:new_goal' %}"> <span class="glyphicon glyphicon-plus-sign"> </span></a></td>
+           <td>
+               {% if scrummer.status_id_id == 4 %}
+               {{ scrummer.task }}
+                   <p>
+                       <a class="btn btn-primary btn-sm" href="{% url 'dolaposcrumy:edit_task' scrummer.pk  %}">move</a>
+                       <a class="btn btn-danger btn-sm" href="{% url 'dolaposcrumy:delete_goal' scrummer.pk %}">delete</a>
+                   </p>
+
+{#                   <a class="btn btn-default" href="{% url 'dolaposcrumy:edit_task' pk= addTask.pk %}">edit</a>#}
+               {% endif %}
+           </td>
+            <td>
+
+               {% if scrummer.status_id_id == 5 %}
+
+               {{ scrummer.task }}
+                    <p>
+                       <a class="btn btn-primary btn-sm" href="{% url 'dolaposcrumy:edit_task' scrummer.pk  %}">move</a>
+                       <a class="btn btn-danger btn-sm" href="{% url 'dolaposcrumy:delete_goal' scrummer.pk %}">delete</a>
+                   </p>
+               {% endif %}
+
+
+             </td>
+            <td>
+
+               {% if scrummer.status_id_id == 6 %}
+               {{ scrummer.task }}
+                    <p>
+                       <a class="btn btn-primary btn-sm" href="{% url 'dolaposcrumy:edit_task' scrummer.pk  %}">move</a>
+                       <a class="btn btn-danger btn-sm" href="{% url 'dolaposcrumy:delete_goal' scrummer.pk %}">delete</a>
+                   </p>
+           {% endif %}
+           </td>
+       <td>
+               {% if scrummer.status_id_id == 7 %}
+               {{ scrummer.task }}
+                    <p>
+                       <a class="btn btn-primary btn-sm" href="{% url 'dolaposcrumy:edit_task' scrummer.pk  %}">move</a>
+                       <a class="btn btn-danger btn-sm" href="{% url 'dolaposcrumy:delete_goal' scrummer.pk %}">delete</a>
+                   </p>
+           {% endif %}
+           </td>
+       </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+
+
+{% for scrum in scrumy_goals.scrumygoals_set.all %}
+    {{ scrumy_goals }}<br/>
+    {{ scrumy_goals.task }}
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+

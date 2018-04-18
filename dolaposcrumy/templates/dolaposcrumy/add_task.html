@@ -1,0 +1,10 @@
+{% extends 'dolaposcrumy/base.html' %}
+{% block content %}
+
+<h1>New Task</h1>
+    <form action="" method="post" class="form-control">{% csrf_token %}
+      {{ form.as_p }}
+        <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
